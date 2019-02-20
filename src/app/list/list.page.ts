@@ -21,7 +21,7 @@ export class ListPage implements OnInit {
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor() {
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 500; i++) {
       this.items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
@@ -31,6 +31,13 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.items = [...this.items];
+    }, 3000);
+  }
+
+  trackByFn(index, item) {
+    return index;
   }
   // add back when alpha.4 is out
   // navigate(item) {
